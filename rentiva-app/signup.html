@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Rentiva</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-page-container">
+        <a href="index.html" class="back-arrow">&larr;</a>
+        <div class="login-form-wrapper">
+            <img src="new_logo.png" alt="Rentiva Logo" class="login-logo">
+            <h2>Create Account</h2>
+            <p class="form-subtitle">Sign up to start your driving journey</p>
+
+            <div class="login-toggle">
+                <button id="phone-btn" class="toggle-btn active">Phone</button>
+                <button id="email-btn" class="toggle-btn">Email</button>
+            </div>
+
+            <form action="#" method="post">
+                <div id="phone-group" class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                </div>
+                <div id="email-group" class="form-group" style="display: none;">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
+                </div>
+                <p class="terms-text">By signing up, you agree to Rentiva's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+                <button type="submit" class="btn btn-block">Sign Up</button>
+                <p class="switch-form">Already have an account? <a href="login.html">Login</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
