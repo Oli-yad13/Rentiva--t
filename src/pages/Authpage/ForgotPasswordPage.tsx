@@ -4,7 +4,7 @@ import { Mail, ArrowLeft, CheckCircle } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Card, CardContent } from "../../components/ui/card";
-import { supabase } from "../../lib/supabaseClient";
+import { supabase } from "/Users/henok/Documents/GitHub/Rentiva--t/src/components/lib/supabaseClient";
 
 export const ForgotPasswordPage = (): JSX.Element => {
     const [email, setEmail] = useState("");
