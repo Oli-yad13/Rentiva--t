@@ -1,63 +1,100 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const FeaturesSection: React.FC = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const features = [
     {
-      icon: '/icons/ac-icon.svg',
-      title: 'Premium Comfort',
-      description: 'All vehicles equipped with air conditioning, comfortable seating, and modern amenities for your journey.'
+      icon: '🚗',
+      title: 'Premium Fleet',
+      description: 'Choose from 500+ meticulously maintained vehicles, from economy to luxury, all equipped with modern amenities.'
     },
     {
-      icon: '/icons/gear-shift-1--1.svg',
-      title: 'Easy Booking',
-      description: 'Simple online booking process with instant confirmation and flexible pickup options.'
+      icon: '⚡',
+      title: 'Instant Booking',
+      description: 'Book your perfect car in under 2 minutes with our streamlined booking process and instant confirmation.'
     },
     {
-      icon: '/icons/fuel-icon.svg',
-      title: 'Fuel Efficient',
-      description: 'Choose from our eco-friendly fleet with excellent fuel economy to save on your travels.'
+      icon: '💰',
+      title: 'Transparent Pricing',
+      description: 'No hidden fees! Get upfront pricing with flexible options and special discounts for extended rentals.'
     },
     {
-      icon: '/icons/g1593-3.svg',
-      title: '24/7 Support',
-      description: 'Round-the-clock customer support to assist you whenever you need help during your rental.'
+      icon: '🛡️',
+      title: '24/7 Roadside',
+      description: 'Complete peace of mind with round-the-clock roadside assistance and dedicated customer support.'
+    },
+    {
+      icon: '📱',
+      title: 'Mobile App',
+      description: 'Manage your bookings on-the-go with our user-friendly mobile app for iOS and Android devices.'
+    },
+    {
+      icon: '🌍',
+      title: 'Nationwide Coverage',
+      description: 'Pick up and drop off at 50+ locations across major cities with flexible scheduling options.'
     }
   ];
 
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-20 px-4 bg-gradient-to-br from-white via-blue-50 to-gray-50">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Why Choose Rentiva?
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Experience the difference with our premium car rental service. 
-            We're committed to making your journey comfortable and hassle-free.
+            We're committed to making your journey comfortable, convenient, and memorable.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="text-center group">
-              <div className="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                <img 
-                  src={feature.icon} 
-                  alt={feature.title}
-                  className="w-8 h-8"
-                  onError={(e) => {
-                    e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=';
-                  }}
-                />
+            <div
+              key={index}
+              className={`bg-white rounded-2xl p-8 shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${
+                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
+              <div className="text-center">
+                <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center text-3xl transform transition-transform duration-300 hover:scale-110">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {feature.description}
-              </p>
             </div>
           ))}
+        </div>
+
+        {/* Stats section */}
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="bg-white rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
+            <div className="text-gray-600">Premium Vehicles</div>
+          </div>
+          <div className="bg-white rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <div className="text-3xl font-bold text-blue-600 mb-2">50+</div>
+            <div className="text-gray-600">Locations</div>
+          </div>
+          <div className="bg-white rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <div className="text-3xl font-bold text-blue-600 mb-2">10k+</div>
+            <div className="text-gray-600">Happy Customers</div>
+          </div>
+          <div className="bg-white rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <div className="text-3xl font-bold text-blue-600 mb-2">4.9★</div>
+            <div className="text-gray-600">Average Rating</div>
+          </div>
         </div>
       </div>
     </section>
