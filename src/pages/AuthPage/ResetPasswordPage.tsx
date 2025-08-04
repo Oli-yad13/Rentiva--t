@@ -30,12 +30,18 @@ export const ResetPasswordPage = (): JSX.Element => {
       supabase.auth.setSession({
         access_token: accessToken,
         refresh_token: refreshToken
-      }).then(({ error }) => {
+      }).then(({ data, error }) => {
         if (error) {
+          console.error('Session error:', error);
           setError("Invalid or expired reset link. Please request a new one.");
-        } else {
+        } else if (data.session) {
           setIsValidSession(true);
+        } else {
+          setError("Invalid reset link. Please request a new password reset.");
         }
+      }).catch((err) => {
+        console.error('Session setup error:', err);
+        setError("Invalid reset link. Please request a new password reset.");
       });
     } else {
       setError("Invalid reset link. Please request a new password reset.");
