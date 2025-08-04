@@ -41,3 +41,4 @@ project/
 
 ## License
 MIT
+# Updated contributors
